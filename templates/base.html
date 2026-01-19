@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="google-site-verification" content="s5A6RVB5QnUt2gPIwutDkjowd-KMscu4myJ0B5KqLNA" />
+    
+    <title>Edgar Morales | Analista de Datos en Chiapas</title>
+    
+    <meta name="description" content="Portafolio de Edgar Morales. Servicios de análisis de datos en Chiapas. Python, SQL...">
+    
+    <meta name="author" content="Edgar Morales">
+    <meta name="keywords" content="analista de datos, data analyst, chiapas, python, sql, visualización de datos">
+
+    <meta property="og:title" content="Edgar Morales | Analista de Datos">
+    <meta property="og:description" content="Mira mis proyectos de análisis de datos y visualización.">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/">Mi Portafolio</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('inicio') }}">Sobre Mí</a></li>
+                <li><a href="{{ url_for('proyectos') }}">Proyectos</a></li>
+                <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Edgar Morales</p>
+    </footer>
+</body>
+</html>

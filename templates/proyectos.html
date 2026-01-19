@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Mis Proyectos</h1>
+    <p>Aquí hay una selección de algunos de mis trabajos.</p>
+
+    <div class="proyectos-grid">
+        {% for proyecto in proyectos %}
+        <div class="card proyecto-card">
+            <h3>{{ proyecto.titulo }}</h3>
+            <p>{{ proyecto.descripcion }}</p>
+            <a href="{{ proyecto.url }}" target="_blank" class="btn">Ver</a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
