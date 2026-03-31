@@ -1,0 +1,51 @@
+<!-- <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Análisis de Datos</title>
+    </head>
+<body>
+
+    <header>
+        <h1>Mi Blog: Datos, Sismos y Supply Chain</h1>
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/proyectos">Proyectos</a>
+            <a href="/contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <main> -->
+    
+    {% extends "base.html" %}
+
+    {% block content %}
+
+        <h2>Últimas entradas</h2>
+
+        {% for post in posts %}
+            <article style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px;">
+                
+                <h3>{{ post.titulo }}</h3>
+                
+                <small>Publicado el: {{ post.fecha_publicacion.strftime('%Y-%m-%d') }}</small>
+                
+                <p>{{ post.resumen }}</p>
+                
+                <a href="/blog/{{ post.id }}">Leer artículo completo &rarr;</a>
+                
+            </article>
+        
+        {% else %}
+            <p>Aún no hay entradas publicadas en el blog. ¡Vuelve pronto!</p>
+        {% endfor %}
+
+    {% endblock %}
+
+<!--         
+
+    </main>
+
+</body>
+</html> -->

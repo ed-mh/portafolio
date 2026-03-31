@@ -1,0 +1,17 @@
+    {% extends "base.html" %}
+
+    {% block content %}
+    <main style="max-width: 800px; margin: 0 auto; padding: 20px;">
+        <h1>{{ post.titulo }}</h1>
+        
+        <p style="color: gray;">
+            <em>Publicado el: {{ post.fecha_publicacion.strftime('%d de %B, %Y') }}</em>
+        </p>
+
+        <hr>
+
+        <article>
+            {{ post.contenido | safe }}
+        </article>
+
+{% endblock %}

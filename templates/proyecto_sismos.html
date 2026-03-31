@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <h1 class="display-4 mb-3">Análisis de la Sismicidad en el Sureste de México</h1>
+            <p class="text-muted">
+                <i class="fas fa-calendar-alt"></i> Publicado en Febrero 2026 | 
+                <i class="fas fa-tag"></i> Data Analysis, Python, Geofísica, Chiapas
+            </p>
+            <hr>
+
+            <section class="mb-5">
+                <p class="lead">
+                    El sureste de México es una región de alta complejidad tectónica donde interactúan las placas de Cocos, Norteamérica y el Caribe. 
+                    Este proyecto analiza el catálogo sísmico de la región (USGS) para caracterizar patrones temporales y espaciales. 
+                    El estudio se centra en distinguir entre tendencias sismológicas reales y sesgos introducidos por la evolución de la instrumentación científica.</p>
+                <p class="lead">
+                    Se utilizan datos históricos desde 1975 y magnitudes M >= 3.5 para garantizar la fiabilidad estadística, 
+                    periodo en el cual la red de monitoreo global comenzó a tener una cobertura más consistente y, normalmente, por debajo de esa magnitud el registro histórico es muy incompleto.
+                </p>
+            </section>
+
+            <section class="mb-5">
+                <h3>1. ¿Está aumentando la sismicidad?</h3>
+                <p>
+                    Observemos el siguiente gráfico.
+                </p>
+                <div class="text-center my-4">
+                    <img src="{{ url_for('static', filename='img/sismos/img1_evolucion_sismica.png') }}" class="img-fluid rounded shadow" 
+                    width="800" 
+                    alt="evolución sismica en chiapas">
+                </div>
+
+                <p>
+                    A primera vista se nota una tendencia creciente. Es crucial interpretar esto con cuidado.
+
+                    El incremento es claramente visible, pero esto
+                    no implica necesariamente una mayor actividad geológica, sino una mejora en la capacidad de detección 
+                    (más estaciones, equipos digitales, mejor telemetría) por parte del Servicio Sismológico Nacional y agencias globales,
+                    la mayoría de estos sismos son de baja intensidad (menores a 5 grados Richter). 
+                    La Tierra no tiembla más; nosotros escuchamos mejor.
+
+                </p>
+            </section>
+
+
+            <section class="mb-5">
+                <h3>2. Distribución de frecuencias según la magnitud del evento</h3>
+                <p>
+
+                El siguiente gráfico de dispersión muestra la relación entre la fecha y la magnitud.
+                </p>
+
+                <div class="text-center my-4">
+                    <img src="{{ url_for('static', filename='img/sismos/img2_distribución_por_magnitud.png') }}" class="img-fluid rounded shadow"
+                        width="800" 
+                        alt="Distribución de Eventos por Magnitud por Semestres">
+                </div>
+
+                <p>
+                Note cómo la densidad de puntos pequeños aumenta con el tiempo (reflejo de la instrumentación), 
+                mientras que los grandes terremotos (puntos altos) ocurren con una frecuencia menos ordenada.
+                Observe que la gran mayoría de los eventos se concentran en magnitudes menores a 5.0 grados Richter. 
+                Esto indica una liberación de energía constante pero moderada.                    
+                </p>
+                
+            </section>
+
+
+            <section class="mb-5">
+                <h3>3. Mapa Sísmico de Chiapas</h3>
+                <p>
+
+                En el siguiente gráfico visualizamos la distribución espacial de los epicentros. 
+                Se muestra cada evento sísmico con un tamaño proporcional a su magnitud y coloreado según la profundidad.
+
+                </p>
+
+                <div class="text-center my-4">
+                    <img src="{{ url_for('static', filename='img/sismos/mapa_sismicidad.png') }}" class="img-fluid rounded shadow"
+                        width="500" 
+                        alt="Mapa de sismicidad de Chiapas">
+                </div>
+
+                <p>
+                Este mapa permite identificar la geometría de la zona de subducción (Fosa Mesoamericana), 
+                donde la sismicidad se alinea con la interacción de placas.                  
+                </p>
+                
+            </section>
+
+
+
+
+
+            <div class="alert alert-info p-4">
+                <h4>Conclusión</h4>
+                <p class="mb-0">
+                Con este análisis encontramos una aparente tendencia al alza en los eventos sísmicos en la región de Chiapas,
+                que más bién puede tratarse de un reflejo del avance en la instrumentación,
+                lo que obliga a priorizar la limpieza de datos para no distorsionar las conclusiones sobre la amenaza regional.
+                </p>
+                <p>
+                Este enfoque permite distinguir entre el 'ruido' generado por la mejor detección de sismos menores 
+                y la realidad del riesgo sísmico latente, el cual se manifiesta en una ocurrencia constante y aleatoria de sismos 
+                de gran magnitud (M>6.0) consistente con la dinámica de una zona de subducción activa y que es independiente 
+                de la capacidad de observación técnica.
+
+
+                </p>
+            </div>
+
+            <div class="mt-5 mb-5 text-center">
+                <a href="https://github.com/ed-mh/An-lisis-de-Sismicidad-en-el-Sureste-de-M-xico.git" class="btn btn-dark btn-lg" target="_blank">
+                    <i class="fab fa-github"></i> Ver Código en GitHub
+                </a>
+                <a href="/proyectos" class="btn btn-outline-secondary btn-lg ms-2">Volver a Proyectos</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
