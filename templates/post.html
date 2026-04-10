@@ -1,17 +1,23 @@
     {% extends "base.html" %}
 
-    {% block content %}
-    <main style="max-width: 800px; margin: 0 auto; padding: 20px;">
-        <h1>{{ post.titulo }}</h1>
-        
-        <p style="color: gray;">
-            <em>Publicado el: {{ post.fecha_publicacion.strftime('%d de %B, %Y') }}</em>
-        </p>
+{% block content %}
+<main style="max-width: 800px; margin: 0 auto; padding: 20px;">
+    <h1>{{ post.titulo }}</h1>
+    
+    <p style="color: gray;">
+        {# Cambiamos fecha_publicacion por fecha #}
+        <em>Publicado el: {{ post.fecha.strftime('%d de %B, %Y') }}</em>
+    </p>
 
-        <hr>
+    <hr>
 
-        <article>
-            {{ post.contenido | safe }}
-        </article>
+    <article>
+        {# El filtro | safe es clave para que se vea el HTML de tus análisis #}
+        {{ post.contenido | safe }}
+    </article>
 
+    <div style="margin-top: 40px;">
+        <a href="{{ url_for('inicio') }}">&larr; Volver al inicio</a>
+    </div>
+</main>
 {% endblock %}

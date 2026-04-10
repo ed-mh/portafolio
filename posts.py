@@ -3,6 +3,7 @@
 from app import app, db, Post
 
 # Creamos el contenido del post
+url ="url-articulo"
 titulo = "Mi primer análisis publicado"
 resumen = "En este artículo explico por qué decidí integrar un blog a mi portafolio usando Flask."
 
@@ -17,6 +18,7 @@ contenido_completo = """
 with app.app_context():
     # 1. Empaquetamos los datos usando el modelo Post
     nueva_entrada = Post(
+        url=url
         titulo=titulo, 
         resumen=resumen, 
         contenido=contenido_completo

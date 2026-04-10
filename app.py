@@ -48,13 +48,17 @@ class Mensaje(db.Model):
     contenido = db.Column(db.Text, nullable=False)       # El mensaje largo
     fecha = db.Column(db.DateTime, default=datetime.utcnow) # Guarda la fecha y hora exacta en automático
 
-# Tabla para guardar los artículos de tu nuevo Blog
+# --- DEFINICIÓN DEL MODELO ---
 class Post(db.Model):
-    id = db.Column(db.Integer, primary_key=True)         # Número único del artículo
-    titulo = db.Column(db.String(200), nullable=False)   # El título de tu análisis
-    resumen = db.Column(db.String(300), nullable=False)  # Un texto cortito para atrapar al lector
-    contenido = db.Column(db.Text, nullable=False)       # Todo el desarrollo de tu artículo
-    fecha_publicacion = db.Column(db.DateTime, default=datetime.utcnow) # Fecha automática
+    id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String(100), unique=True, nullable=False)
+    titulo = db.Column(db.String(200), nullable=False)
+    resumen = db.Column(db.String(500), nullable=False)
+    contenido = db.Column(db.Text, nullable=False)
+    fecha = db.Column(db.DateTime, default=datetime.utcnow) # Útil para ordenar posts
+
+    def __repr__(self):
+        return f'<Post {self.titulo}>'
 
 # =========================================================
 # 4. EL MAPA DEL SITIO (Rutas o Vistas)
@@ -132,18 +136,18 @@ def redirect_to_home():
 @app.route('/blog')
 def blog():
     # Vamos a la base de datos, buscamos TODOS los posts y los ordenamos por fecha (del más nuevo al más viejo)
-    entradas = Post.query.order_by(Post.fecha_publicacion.desc()).all()
+    entradas = Post.query.order_by(Post.fecha.desc()).all()
     # Le pasamos esas entradas al HTML para que cree una lista
     return render_template('blog.html', posts=entradas)
 
-# Esta ruta es dinámica. El <int:post_id> significa que Flask espera un número.
-# Ej: /blog/1 mostrará tu primer artículo, /blog/2 el segundo, etc.
-@app.route('/blog/<int:post_id>')
-def leer_post(post_id):
-    # Buscamos en la base de datos el artículo con ese número exacto.
-    # Si alguien escribe /blog/999 y no existe, Flask mostrará un error 404 de "Página no encontrada"
-    entrada = Post.query.get_or_404(post_id)
-    # Le mandamos solo ESE artículo al diseño del HTML
+# Cambiamos <int:post_id> por <string:post_url>
+@app.route('/blog/<string:post_url>')
+def leer_post(post_url):
+    # Buscamos el artículo usando la columna 'url' que definimos en el modelo
+    # filter_by busca coincidencias y first_or_404() devuelve el resultado o un error 404
+    entrada = Post.query.filter_by(url=post_url).first_or_404()
+    
+    # Pasamos el objeto 'entrada' al template
     return render_template('post.html', post=entrada)
 
 

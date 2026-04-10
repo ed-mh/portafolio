@@ -1,31 +1,26 @@
 {% extends "base.html" %}
 
-    {% block content %}
+{% block content %}
 
-      <!--  <h2>Últimas entradas</h2> -->
+  {% for post in posts %}
+        <article style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 8px;">
+            
+            <h3>{{ post.titulo }}</h3>
+            
+            {# Cambiamos fecha_publicacion por fecha para que coincida con el modelo #}
+            <small>Publicado el: {{ post.fecha.strftime('%d-%m-%Y') }}</small>
+            
+            <p>{{ post.resumen }}</p>
+            
+            {# Usamos url_for y pasamos el campo post.url #}
+            <a href="{{ url_for('leer_post', post_url=post.url) }}" style="font-weight: bold; text-decoration: none; color: #007bff;">
+                Leer artículo completo &rarr;
+            </a>
+            
+        </article>
+    
+    {% else %}
+        <p>Aún no hay entradas publicadas en el blog. ¡Vuelve pronto!</p>
+    {% endfor %}
 
-        {% for post in posts %}
-            <article style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px;">
-                
-                <h3>{{ post.titulo }}</h3>
-                
-                <small>Publicado el: {{ post.fecha_publicacion.strftime('%Y-%m-%d') }}</small>
-                
-                <p>{{ post.resumen }}</p>
-                
-                <a href="/blog/{{ post.id }}">Leer artículo completo &rarr;</a>
-                
-            </article>
-        
-        {% else %}
-            <p>Aún no hay entradas publicadas en el blog. ¡Vuelve pronto!</p>
-        {% endfor %}
-
-    {% endblock %}
-
-<!--         
-
-    </main>
-
-</body>
-</html> -->
+{% endblock %}
