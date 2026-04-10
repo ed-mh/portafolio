@@ -91,12 +91,15 @@ def proyectos():
     lista_proyectos = [
         {
             "titulo": "Análisis de la Sismicidad en el Sureste de México",
-            "descripcion": "Análisis exploratorio de datos...",
+            "descripcion": "Análisis exploratorio de datos (EDA) y geoespacial de la actividad sísmica de Chiapas y el sureste de México,"
+            "una de las zonas tectónicas más complejas de América debido a la interacción de las placas de Cocos, Norteamérica y del Caribe.",
             "url": "/proyectos/analisis-sismos"
         },
         {
             "titulo": "Supply Chain Intelligence | Optimización de Inventarios",
-            "descripcion": "Proyecto 'End-to-End' que transforma datos...",
+            "descripcion": "Proyecto 'End-to-End' que transforma datos operativos en indicadores estratégicos."
+            "Desarrollo del flujo completo de ETL en Python, almacenamiento en MySQL y visualización en Power BI,"
+            "incluye análisis estadístico de errores de pronóstico y monitorización de KPIs de salud de stock.",
             "url": "/proyectos/supply-chain"
         }
     ]

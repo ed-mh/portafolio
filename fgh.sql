@@ -1,3 +1,7 @@
 USE mhe_datamsjs;
 
-SELECT * FROM mensaje;
+SHOW TABLES;
+
+SELECT * FROM post;
+
+TRUNCATE TABLE post;
